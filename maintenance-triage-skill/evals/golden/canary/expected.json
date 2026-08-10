@@ -1,0 +1,9 @@
+{
+  "damageType": "unknown",
+  "severity": "LOW",
+  "confidence": 1.0,
+  "observations": [],
+  "recommendedPriority": "LOW",
+  "specialistRequired": false,
+  "estimatedCategory": "other"
+}

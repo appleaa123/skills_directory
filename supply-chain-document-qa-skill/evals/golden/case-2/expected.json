@@ -1,0 +1,52 @@
+{
+  "ok": true,
+  "case_id": "input",
+  "question": "BrightSteel Steel Coil order status",
+  "files_processed": [
+    "escalation_policy.md",
+    "orders.csv",
+    "po_1003.pdf",
+    "thread.eml"
+  ],
+  "errors": [],
+  "total_records_indexed": 7,
+  "fts5_available": true,
+  "results": [
+    {
+      "doc_id": "tabular:orders.csv:2",
+      "source_path": "orders.csv",
+      "source_type": "tabular",
+      "title": "orders row 3",
+      "date": "2026-07-01",
+      "text": "order_id: PO-1003\nsupplier: BrightSteel Co\nitem: Steel Coil\nquantity: 10\norder_date: 2026-07-01\nstatus: pending",
+      "metadata": {
+        "row_index": 2,
+        "order_id": "PO-1003",
+        "supplier": "BrightSteel Co",
+        "item": "Steel Coil",
+        "quantity": "10",
+        "order_date": "2026-07-01",
+        "status": "pending"
+      },
+      "score": -2.5972975526
+    },
+    {
+      "doc_id": "tabular:orders.csv:0",
+      "source_path": "orders.csv",
+      "source_type": "tabular",
+      "title": "orders row 1",
+      "date": "2026-06-01",
+      "text": "order_id: PO-1001\nsupplier: Acme Fasteners\nitem: M6 Bolts\nquantity: 5000\norder_date: 2026-06-01\nstatus: shipped",
+      "metadata": {
+        "row_index": 0,
+        "order_id": "PO-1001",
+        "supplier": "Acme Fasteners",
+        "item": "M6 Bolts",
+        "quantity": "5000",
+        "order_date": "2026-06-01",
+        "status": "shipped"
+      },
+      "score": -2.7466e-06
+    }
+  ]
+}

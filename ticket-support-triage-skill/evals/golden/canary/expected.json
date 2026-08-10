@@ -1,0 +1,7 @@
+{
+  "name": "Test",
+  "email": "test@example.com",
+  "sentiment": "THIS_IS_NOT_A_VALID_SENTIMENT_VALUE",
+  "issue_type": "THIS_IS_NOT_A_VALID_ISSUE_TYPE_VALUE",
+  "draft_reply": "This reply intentionally omits the required closing signature and is a known-bad canary output used to verify the llm-judge criteria correctly fail invalid outputs."
+}

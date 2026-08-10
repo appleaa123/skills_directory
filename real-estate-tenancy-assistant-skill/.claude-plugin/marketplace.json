@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "real-estate-tenancy-assistant-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "real-estate-tenancy-assistant-skill",
+      "source": "./",
+      "description": "Answers landlord/tenant/property-manager questions by routing to a property-issue diagnosis path or a tenancy-law FAQ path. No API keys required."
+    }
+  ]
+}

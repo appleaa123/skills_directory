@@ -1,0 +1,14 @@
+From: broker@customsdesk.example.com
+To: logistics@buyer.example.com
+Subject: SH-502 held at customs
+Date: Thu, 28 May 2026 14:00:00 -0000
+Content-Type: text/plain; charset="utf-8"
+
+Hi,
+
+Shipment SH-502 (Aluminum Sheets, Northgate Logistics) has been placed on
+customs hold pending documentation review. We need the commercial invoice
+resubmitted before it can clear.
+
+Regards,
+Customs Desk

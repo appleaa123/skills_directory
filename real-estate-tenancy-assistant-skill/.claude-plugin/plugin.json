@@ -1,0 +1,8 @@
+{
+  "name": "real-estate-tenancy-assistant-skill",
+  "version": "1.0.0",
+  "description": "Answers landlord/tenant/property-manager questions by routing to a property-issue diagnosis path or a tenancy-law FAQ path. No API keys required.",
+  "author": {
+    "name": "agent-skill-creator"
+  }
+}

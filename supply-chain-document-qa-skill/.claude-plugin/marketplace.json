@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "supply-chain-document-qa-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "supply-chain-document-qa-skill",
+      "source": "./",
+      "description": "Zero-infrastructure document Q and A over PDFs, emails, and database/spreadsheet exports using SQLite FTS5 lexical search instead of a vector database."
+    }
+  ]
+}
