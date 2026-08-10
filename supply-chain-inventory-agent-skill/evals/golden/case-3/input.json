@@ -1,0 +1,58 @@
+{
+  "num_stages": 4,
+  "num_periods": 12,
+  "init_inventories": [
+    12,
+    14,
+    16,
+    18
+  ],
+  "lead_times": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "demand": {
+    "type": "normal",
+    "mean": 4,
+    "std": 2
+  },
+  "prod_capacities": [
+    20,
+    22,
+    24,
+    26
+  ],
+  "sale_prices": [
+    9,
+    8,
+    7,
+    6
+  ],
+  "order_costs": [
+    8,
+    7,
+    6,
+    5
+  ],
+  "backlog_costs": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "holding_costs": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "stage_names": [
+    "retailer",
+    "wholesaler",
+    "distributor",
+    "manufacturer"
+  ],
+  "demand_description": "The expected demand at the retailer (stage 1) is a normal distribution N(4, 2^2), truncated at 0, for all 12 rounds."
+}

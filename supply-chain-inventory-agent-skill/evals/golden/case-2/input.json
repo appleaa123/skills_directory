@@ -1,0 +1,61 @@
+{
+  "num_stages": 4,
+  "num_periods": 12,
+  "init_inventories": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "lead_times": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "demand": {
+    "type": "seasonal_uniform_int",
+    "early_low": 0,
+    "early_high": 4,
+    "late_low": 5,
+    "late_high": 8,
+    "switch_period": 4
+  },
+  "prod_capacities": [
+    20,
+    20,
+    20,
+    20
+  ],
+  "sale_prices": [
+    5,
+    5,
+    5,
+    5
+  ],
+  "order_costs": [
+    5,
+    5,
+    5,
+    5
+  ],
+  "backlog_costs": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "holding_costs": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "stage_names": [
+    "retailer",
+    "wholesaler",
+    "distributor",
+    "manufacturer"
+  ],
+  "demand_description": "The expected demand at the retailer (stage 1) is a discrete uniform distribution U{0, 4} for the first 4 rounds, and a discrete uniform distribution U{5, 8} for the last 8 rounds."
+}
