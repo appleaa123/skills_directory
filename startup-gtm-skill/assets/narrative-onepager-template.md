@@ -1,0 +1,44 @@
+# [COMPANY NAME] — Sales Narrative & Pricing One-Pager
+
+## Problem
+[PROBLEM STATEMENT — one to two jargon-free sentences describing the business pain]
+
+## Who Has This Pain
+- Title/role: [SPECIFIC JOB TITLE OR ROLE]
+- Why them: [WHY THIS ROLE OWNS THE PROBLEM — budget or labor-hour ownership]
+- Scaling note: [HOW OWNERSHIP OF THIS PAIN SHIFTS AS THE ORG GROWS, IF APPLICABLE]
+
+## What's Changed
+[THE TECHNOLOGICAL, BEHAVIORAL, OR ECONOMIC SHIFT THAT MAKES THE SOLUTION POSSIBLE OR NECESSARY NOW]
+
+## Cost of the Problem
+- Type: [HARD ROI / SOFT ROI (OPPORTUNITY COST) / DIRECTIONAL]
+- Unit cost: [DOLLAR OR TIME COST PER UNIT — E.G., PER HIRE, PER TICKET, PER REP, PER MONTH]
+- Scaled impact: [HOW THIS SCALES WITH PROSPECT COMPANY SIZE]
+
+## Current (Insufficient) Solutions
+| Approach | What they do | Why it falls short |
+|---|---|---|
+| [NO SOLUTION / PROCESS / SERVICE PROVIDER / COMPETING PRODUCT] | [DESCRIPTION] | [SPECIFIC FAILURE MODE — TIME COST, DOLLAR COST, ERROR RATE, COVERAGE GAP] |
+
+## Our Solution
+[ONE-SENTENCE ANALOGY TO SOMETHING THE PROSPECT ALREADY UNDERSTANDS] + [THE DELTA]
+
+## Proof
+**Quantitative** (same units as Cost of the Problem section):
+- [METRIC 1: OUR SOLUTION VS. STATUS QUO, WITH NUMBER]
+- [METRIC 2: OUR SOLUTION VS. STATUS QUO, WITH NUMBER]
+
+**Qualitative** (backed by a metric where possible):
+- [CLAIM] — supported by [METRIC]
+
+**Third-party validation**:
+- [CUSTOMER COUNT / TESTIMONIAL / CASE STUDY / PRESS-ANALYST MENTION]
+
+## Pricing Recommendation
+- **Structure**: [PER-SEAT / PER-USAGE-UNIT / FLAT, PAID [MONTHLY/ANNUALLY UPFRONT]]
+- **Initial price**: [STARTING PRICE POINT]
+- **Comparable-based rationale**: [NEAREST EXISTING SOLUTION AND ITS PRICE, AND WHY OUR PRICE IS POSITIONED RELATIVE TO IT]
+- **ROI-based rationale**: [MODELED CUSTOMER VALUE AND IMPLIED RETURN MULTIPLE, IF KNOWN]
+- **Threshold check**: [BUDGET-APPROVAL LEVEL THIS PRICE CLEARS — INDIVIDUAL CARD / MANAGER EXPENSE / DEPT DISCRETIONARY BUDGET]
+- **Iteration plan**: [NEXT PRICE TO TEST AND SIGNAL THAT TRIGGERS THE RAISE — E.G., "NO PUSHBACK AT CURRENT PRICE ON NEXT N DEALS"]
