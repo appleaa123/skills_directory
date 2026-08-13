@@ -1,0 +1,1 @@
+{"task_shape":"new_facts","labeled_examples":0,"update_frequency":"constant","compute_budget":"api_only","latency":"flexible","safety_exposure":"cooperative_internal","notes":"support bot over 5k product docs updated weekly"}

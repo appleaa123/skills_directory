@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "llm-approach-advisor-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "llm-approach-advisor-skill",
+      "source": "./",
+      "description": "Advises which LLM build approach (prompting, RAG, fine-tuning, knowledge editing, alignment, multimodal/agent) fits a given goal and constraints."
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"task_shape":"new_facts","labeled_examples":0,"update_frequency":"rare_few_facts","compute_budget":"single_gpu","latency":"flexible","safety_exposure":"cooperative_internal","notes":"deployed model states wrong fact about CEO, fix this week"}

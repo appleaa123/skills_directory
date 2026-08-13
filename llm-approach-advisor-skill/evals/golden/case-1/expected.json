@@ -1,0 +1,56 @@
+{
+  "ranked_approaches": [
+    {
+      "approach": "fine_tuning",
+      "label": "Fine-tuning (LoRA or full)",
+      "score": 7.0,
+      "reasons": [
+        "If prompting plateaus, fine-tuning teaches a new skill directly",
+        "Light LoRA fine-tuning is viable but gains over few-shot may be marginal",
+        "One-time/static knowledge is fine to bake into fine-tuned weights",
+        "Single GPU is sufficient for LoRA fine-tuning of small/mid models"
+      ]
+    },
+    {
+      "approach": "prompting_cot",
+      "label": "Prompting / Chain-of-Thought",
+      "score": 6.0,
+      "reasons": [
+        "Task shape is new skill -> try prompting/CoT first",
+        "Small example count favors few-shot prompting first",
+        "Flexible latency keeps prompting/RAG's fast iteration loop attractive"
+      ]
+    },
+    {
+      "approach": "rag",
+      "label": "Retrieval-Augmented Generation (RAG)",
+      "score": 0.0,
+      "reasons": []
+    },
+    {
+      "approach": "knowledge_editing",
+      "label": "Knowledge Editing (ROME/MEMIT)",
+      "score": 0.0,
+      "reasons": []
+    },
+    {
+      "approach": "multimodal_agent",
+      "label": "Multimodal / Agent Architecture",
+      "score": -2.0,
+      "reasons": [
+        "Multimodal/agent SFT typically needs multi-GPU (3x80GB+ in tutorial)"
+      ]
+    },
+    {
+      "approach": "alignment_training",
+      "label": "Alignment Training (RLHF/PPO)",
+      "score": -2.0,
+      "reasons": [
+        "PPO needs ~2x base model memory (policy + reference); tight on a single GPU"
+      ]
+    }
+  ],
+  "top_pick": "fine_tuning",
+  "safety_review_required": false,
+  "safety_note": "Cooperative/internal use: standard prompting-safety practices are likely sufficient."
+}
