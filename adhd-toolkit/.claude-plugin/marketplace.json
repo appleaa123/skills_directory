@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "adhd-toolkit",
+  "owner": {
+    "name": "ADHD Toolkit Project"
+  },
+  "plugins": [
+    {
+      "name": "adhd-toolkit",
+      "source": "./",
+      "description": "Operating rules for ADHD-compatible AI behavior — progressive disclosure, low decision fatigue, shame-free resets, task initiation and focus scaffolding — paired with a source-audited knowledge base on executive function, time blindness, emotional regulation, sleep, and ADHD nutrition. Cited to ADHD 2.0, How to ADHD, and This Is Your Brain on Food, or tagged practitioner-common."
+    }
+  ]
+}
