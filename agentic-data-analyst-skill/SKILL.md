@@ -14,7 +14,7 @@ description: >-
   autonomous/agentic data analysis rather than a single quick query.
 license: MIT
 metadata:
-  version: 1.0.0
+  version: 1.0.1
   created: 2026-08-18
   last_reviewed: 2026-08-18
   review_interval_days: 180
@@ -152,6 +152,12 @@ no format discussion at all).
   PowerPoint deck is just as valid a format template as a Markdown report
   — only the user's intent to use it as a template matters, not its file
   type.
+- **Don't copy a template's numbers into the new report.** A template
+  teaches structure/format only — every number, stat, correlation, or
+  conclusion in it belongs to *that* template's dataset. If a raw dump of
+  the template (unzip/grep/markitdown) surfaces data-driven content, that
+  content is off-limits for the new report unless independently
+  reproduced by an executed step against the current dataset.
 - **Don't describe a chart in prose instead of generating one.** Any
   comparative/trend/distributional finding needs an actual rendered chart
   as evidence.

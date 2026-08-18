@@ -59,6 +59,20 @@ say so explicitly when presenting the inferred format back, since the
 requested output type may not even be able to carry that (e.g. plain
 Markdown has no color).
 
+**Never carry a template's data-driven content into the new report.** A
+template teaches shape — section order, headings, tone, chart types,
+KPI-card layout — never values. Every number, stat, correlation,
+percentage, or data-backed conclusion that appears in the template (e.g.
+"22 features," a correlation coefficient, "lowest conversion rate
+observed") belongs to *that template's* dataset, not the one you're about
+to analyze. Treat every such value as something to recompute from the
+current data, not something to reuse, even if it would be tedious to
+recompute or the template looks polished. If a template is read via a raw
+dump (unzip/grep/markitdown/etc.) rather than through the Understand step,
+that dump is format signal only — nothing extracted from it may appear in
+the final report unless it was independently reproduced by an executed
+step against the current dataset.
+
 Present the inferred format back to the user for confirmation before
 generating anything: "Here's the format I picked up from your example:
 [bullet summary]. Match this?"
@@ -164,3 +178,13 @@ lets a future run reproduce the right deliverable type without re-asking.
   is wasted/misleading if the deliverable is plain Markdown — only carry
   visual-design inferences into the spec when the target output type can
   actually reproduce them (e.g. HTML or PowerPoint).
+- **Don't copy a template's numbers, stats, or conclusions into the new
+  report.** This is the same violation as narrating an ungrounded claim,
+  just disguised as "matching the format" — a template's feature count,
+  correlation coefficients, model scores, or business-recommendation
+  bullets are analysis output from a *different* dataset, not part of the
+  format. If the new report's numbers happen to equal the template's,
+  that must be because an executed step on the current data reproduced
+  them, not because they were carried over — and if the current data
+  produces different numbers than the template, that's the correct
+  outcome, not a bug to "fix" by matching the template.

@@ -60,6 +60,10 @@ A finished report is correct when:
 - [ ] Comparative/trend findings that would be clearer as a chart include
   an actual generated chart, not just a prose description of what a chart
   would show.
+- [ ] If a format template was used, every number/stat/conclusion in the
+  final report was independently recomputed from the current dataset —
+  none were carried over from the template's own content (see
+  [format-setup-and-persistence.md](format-setup-and-persistence.md)).
 
 ## Gotchas
 
