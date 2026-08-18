@@ -19,6 +19,28 @@ If the user has no preference and no example, default to:
 4. **Conclusions** — evidence-based answer to the original question,
    including any caveats or limitations the analysis surfaced.
 
+This structure applies regardless of the deliverable's output file type —
+a `.pptx` report still needs these as its slide sections, an `.xlsx`
+report needs them as labeled sheets/blocks, an HTML report needs them as
+page sections.
+
+## Charts
+
+When a finding is comparative, trend/time-series, or distributional,
+generate an actual supporting chart as part of the Code step — don't just
+describe in prose what a chart would show. Save the chart as a file and
+embed/reference it in the report using whatever mechanism the deliverable's
+output type supports:
+
+- Markdown → save the image file, embed with `![caption](path/to/chart.png)`
+- HTML → embed the image inline (or as an inline SVG)
+- PowerPoint (`.pptx`) → insert the chart image on the relevant slide
+- Excel (`.xlsx`) → insert as a native chart object or embedded image next
+  to the relevant data
+
+The chart is Observe-stage evidence like any Code output — it must be
+generated from the actual data, not mocked up or approximated.
+
 ## Success Criteria
 
 A finished report is correct when:
@@ -35,6 +57,9 @@ A finished report is correct when:
   disclosed if they affect the conclusions.
 - [ ] The report is reproducible in principle — another analyst could
   follow the methodology section and get the same result.
+- [ ] Comparative/trend findings that would be clearer as a chart include
+  an actual generated chart, not just a prose description of what a chart
+  would show.
 
 ## Gotchas
 
@@ -49,3 +74,8 @@ A finished report is correct when:
   quality, or scope constraints limited the analysis, say so explicitly
   in Conclusions rather than presenting a narrower result as the full
   answer.
+- **Don't describe a chart in words instead of generating one.** "As
+  shown in the trend, revenue increased..." without an actual generated
+  chart is the visual-evidence equivalent of narrating an ungrounded
+  conclusion — if a finding is comparative/trend/distributional, render
+  it.

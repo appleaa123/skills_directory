@@ -82,6 +82,38 @@ Lane: Public Polished
   - No repeated wall of format questions.
   - Report matches the previously persisted format.
 
+- Prompt: "Here's a screenshot of last year's report (`report_example.png`)
+  — use this as the template and analyze `this_year.csv`."
+  Expected: Format Setup treats the image as a valid template, infers
+  section structure/tone/length only (not exact visual design), presents
+  the inferred format back explicitly noting visual design was not
+  replicated, then generates the report.
+  Success signals:
+  - Inferred format summary explicitly notes it skipped color/font/layout
+    inference.
+  - `report-format.md`'s `Source:` field records the screenshot path.
+
+- Prompt: "Learn the format from `template.xlsx` and generate this
+  quarter's report as an actual PowerPoint file."
+  Expected: Format Setup infers structure from the Excel template; Report
+  Generation produces a real `.pptx` file (via code, e.g. python-pptx);
+  `report-format.md` is still written as Markdown with `Source: learned
+  from template.xlsx` and `Output type: PowerPoint`.
+  Success signals:
+  - The deliverable is a genuine `.pptx` file, not Markdown styled to
+    resemble slides.
+  - `report-format.md` remains a `.md` file with both `Source` and
+    `Output type` fields populated and different from each other.
+
+- Prompt: "Analyze `regional_sales.csv` and show me how each region's
+  revenue compares."
+  Expected: Since the finding is comparative, the Code step generates an
+  actual chart file (e.g. a bar chart) and the report embeds it — not just
+  a prose description of the comparison.
+  Success signals:
+  - A chart image file exists and is referenced/embedded in the report.
+  - Success Criteria checklist item on charts is satisfied.
+
 ## Incomplete Context
 
 - Prompt: "Analyze this data." (no file/path given)
@@ -112,6 +144,16 @@ Lane: Public Polished
   - Skill still asks 3+ format questions despite explicit override.
   - Skill silently drops execution-grounding rigor because format was
     skipped (these are independent — skipping format ≠ skipping grounding).
+
+- Prompt: "Generate this report as an Excel file" on a project with no
+  prior `report-format.md`.
+  Expected: The deliverable is generated as a real `.xlsx` file, but
+  `report-format.md` is still written as plain Markdown describing the
+  format — never as an `.xlsx` file itself, never skipped because the
+  deliverable "isn't Markdown."
+  Failure signals:
+  - `report-format.md` is missing because the deliverable was non-Markdown.
+  - The persisted spec file is itself written in a non-Markdown format.
 
 ## Fresh-Agent Test
 

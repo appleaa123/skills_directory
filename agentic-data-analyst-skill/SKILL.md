@@ -3,11 +3,14 @@ name: agentic-data-analyst-skill
 description: >-
   Runs autonomous, execution-grounded data analysis: explores structured
   (CSV/Excel/DB), semi-structured (JSON/XML), or unstructured (text/Markdown)
-  data via an interleaved understand-analyze-code-observe loop, then produces
-  an evidence-cited report in a format the user specifies or that is learned
-  from a past report example. Use when the user asks to analyze a dataset or
-  file, explore data, investigate a data question, "dig into this CSV/data",
-  build a data report, run a data science task end-to-end, or wants an
+  data via an interleaved understand-analyze-code-observe loop, generates
+  real charts for comparative/trend findings, and produces an evidence-cited
+  report in whatever output format is requested (Markdown, Excel, CSV, HTML,
+  PowerPoint) — learning the format from a user-specified template of any
+  file type, including a screenshot/photo. Use when the user asks to analyze
+  a dataset or file, explore data, investigate a data question, "dig into
+  this CSV/data", build a data report, match a report to a template/example
+  they provide, run a data science task end-to-end, or wants an
   autonomous/agentic data analysis rather than a single quick query.
 license: MIT
 metadata:
@@ -46,7 +49,11 @@ much Format Setup and report structure is warranted (see Modes below).
 2. **Every claim must be execution-grounded** — a conclusion is only valid
    if a specific executed step produced the evidence for it.
 3. **Establish the output format before analyzing, not after** — format
-   shapes what evidence to collect. See
+   shapes what evidence to collect. The template can come from any file
+   type (Markdown, Excel, HTML, PowerPoint, or a screenshot) as long as
+   the user labels it as the format to follow; the deliverable's output
+   file type is chosen independently and generated as a real file of that
+   type. See
    [format-setup-and-persistence.md](references/format-setup-and-persistence.md).
 4. **The deliverable is a report, not a chat answer** for anything beyond a
    single quick fact — see
@@ -78,9 +85,13 @@ Read [format-setup-and-persistence.md](references/format-setup-and-persistence.m
 and follow it exactly:
 1. Check for `./report-format.md` in the project first.
 2. If missing/stale, elicit format requirements directly and/or offer to
-   learn from a past report example the user points to.
+   learn from a template the user points to — any file type (Markdown,
+   PDF, Excel, HTML, PowerPoint, screenshot/photo) counts as a valid
+   template as long as the user says it's the format to follow.
 3. Confirm the (found, elicited, or learned) format with the user before
-   analyzing.
+   analyzing — including confirming what output file type the deliverable
+   itself should be generated as (it doesn't have to match the template's
+   file type).
 
 **Wait gate:** proceed to Step 2 only once the format is confirmed (or the
 user explicitly says to skip formatting for a quick answer).
@@ -99,16 +110,21 @@ and run the Understand → Analyze → Code → Observe → Answer loop:
 
 Read [report-structure-and-success-criteria.md](references/report-structure-and-success-criteria.md).
 Write the Answer step's output to match the confirmed format from Step 1,
-citing the specific executed steps behind each claim. Run through the
+as a real file of the confirmed output type (Markdown, `.xlsx`, `.csv`,
+`.html`, or `.pptx` — generated via code, not faked in Markdown), citing
+the specific executed steps behind each claim, and with real generated
+charts for any comparative/trend/distributional finding. Run through the
 Success Criteria checklist before presenting it as done.
 
 ### Step 4: Persist the Format Learning
 
 Per [format-setup-and-persistence.md](references/format-setup-and-persistence.md)
 Step 4, write or update `./report-format.md` with the confirmed/learned
-format spec (structure, style, notes) — not a copy of the report content.
-Skip this only if the user explicitly declined a full analysis (pure Quick
-Explore with no format discussion at all).
+format spec (structure, style, notes, and the deliverable's output type)
+— not a copy of the report content. **This file is always Markdown, even
+when the deliverable itself is `.xlsx`/`.pptx`/`.html`.** Skip this only
+if the user explicitly declined a full analysis (pure Quick Explore with
+no format discussion at all).
 
 ---
 
@@ -132,6 +148,16 @@ Explore with no format discussion at all).
 - **Don't skip data-shape probing on "obviously simple" inputs.** Malformed
   headers, mixed types, and encoding issues are common and cheap to catch
   early.
+- **Don't assume a template must be text.** A screenshot, Excel file, or
+  PowerPoint deck is just as valid a format template as a Markdown report
+  — only the user's intent to use it as a template matters, not its file
+  type.
+- **Don't describe a chart in prose instead of generating one.** Any
+  comparative/trend/distributional finding needs an actual rendered chart
+  as evidence.
+- **Don't let the deliverable's output format determine the persisted
+  spec's format.** `report-format.md` is always Markdown, regardless of
+  whether the report itself is Excel, HTML, or PowerPoint.
 
 Full gotcha lists with rationale live in each reference file linked above —
 load them when the relevant step is active, not all at once.

@@ -73,6 +73,11 @@ check each Code step's output against the Analyze step that preceded it.
 - If multiple data sources are involved → resolve relationships between
   them (joins/keys/formats) as an explicit Analyze step, not implicitly
   inside one large Code block.
+- If a finding is comparative/trend/distributional → generate a chart as
+  part of the Code step and treat the chart file as Observe-stage
+  evidence. Don't defer visualization to report-writing time as an
+  afterthought — it should come from the same executed step as the
+  finding it supports.
 
 ## Gotchas
 
