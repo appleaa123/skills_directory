@@ -1,0 +1,8 @@
+{
+  "name": "supply-chain-inventory-agent-skill",
+  "version": "1.0.0",
+  "description": "Multi-agent LLM inventory management simulation distilled from InvAgent, benchmarked against a fixed base-stock policy.",
+  "author": {
+    "name": "agent-skill-creator"
+  }
+}

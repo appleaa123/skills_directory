@@ -1,0 +1,7 @@
+{
+  "records": [
+    {"shipment_id": "SH-501", "supplier": "Northgate Logistics", "carrier": "OceanFreight Co", "item": "Copper Wire Reels", "quantity": 40, "shipment_date": "2026-05-20", "status": "in_transit"},
+    {"shipment_id": "SH-502", "supplier": "Northgate Logistics", "carrier": "OceanFreight Co", "item": "Aluminum Sheets", "quantity": 120, "shipment_date": "2026-05-28", "status": "customs_hold"},
+    {"shipment_id": "SH-503", "supplier": "Delta Components", "carrier": "AirExpress", "item": "Circuit Boards", "quantity": 800, "shipment_date": "2026-06-02", "status": "delivered"}
+  ]
+}

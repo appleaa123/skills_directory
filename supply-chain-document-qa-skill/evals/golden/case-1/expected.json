@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "case_id": "input",
+  "question": "Acme Fasteners M8 Bolts shipment delay",
+  "files_processed": [
+    "escalation_policy.md",
+    "extra_shipments.xlsx",
+    "orders.csv",
+    "po_1003.pdf",
+    "thread.eml"
+  ],
+  "errors": [],
+  "total_records_indexed": 8,
+  "fts5_available": true,
+  "results": [
+    {
+      "doc_id": "tabular:orders.csv:1",
+      "source_path": "orders.csv",
+      "source_type": "tabular",
+      "title": "orders row 2",
+      "date": "2026-06-15",
+      "text": "order_id: PO-1002\nsupplier: Acme Fasteners\nitem: M8 Bolts\nquantity: 2000\norder_date: 2026-06-15\nstatus: delayed",
+      "metadata": {
+        "row_index": 1,
+        "order_id": "PO-1002",
+        "supplier": "Acme Fasteners",
+        "item": "M8 Bolts",
+        "quantity": "2000",
+        "order_date": "2026-06-15",
+        "status": "delayed"
+      },
+      "score": -4.113123913
+    },
+    {
+      "doc_id": "tabular:orders.csv:0",
+      "source_path": "orders.csv",
+      "source_type": "tabular",
+      "title": "orders row 1",
+      "date": "2026-06-01",
+      "text": "order_id: PO-1001\nsupplier: Acme Fasteners\nitem: M6 Bolts\nquantity: 5000\norder_date: 2026-06-01\nstatus: shipped",
+      "metadata": {
+        "row_index": 0,
+        "order_id": "PO-1001",
+        "supplier": "Acme Fasteners",
+        "item": "M6 Bolts",
+        "quantity": "5000",
+        "order_date": "2026-06-01",
+        "status": "shipped"
+      },
+      "score": -2.577730528
+    },
+    {
+      "doc_id": "email:b3aa1d6e59b73368",
+      "source_path": "thread.eml",
+      "source_type": "email",
+      "title": "PO-1002 shipment delay",
+      "date": "2026-07-15",
+      "text": "Subject: PO-1002 shipment delay\nFrom: procurement@buyer.example.com\nTo: sales@acmefasteners.example.com\n\nHi team,\n\nPO-1002 (M8 Bolts, 2000 units) is now three weeks overdue. Can you confirm the new ship date?\n\nThanks,\nJordan",
+      "metadata": {
+        "from": "procurement@buyer.example.com",
+        "to": "sales@acmefasteners.example.com",
+        "subject": "PO-1002 shipment delay",
+        "part": "latest_reply",
+        "chunk_index": 0
+      },
+      "score": -2.2687962093
+    }
+  ]
+}

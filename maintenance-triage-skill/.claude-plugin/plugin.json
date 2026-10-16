@@ -1,0 +1,8 @@
+{
+  "name": "maintenance-triage-skill",
+  "version": "1.0.0",
+  "description": "Assesses a tenant-reported maintenance issue's severity, assigns priority, and computes/checks its SLA deadline. No API keys required.",
+  "author": {
+    "name": "agent-skill-creator"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ticket-support-triage-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "ticket-support-triage-skill",
+      "source": "./",
+      "description": "Classifies a customer support ticket by sentiment and issue type, then drafts an empathetic professional reply. No API keys required."
+    }
+  ]
+}

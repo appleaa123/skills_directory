@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "maintenance-triage-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "maintenance-triage-skill",
+      "source": "./",
+      "description": "Assesses a tenant-reported maintenance issue's severity, assigns priority, and computes/checks its SLA deadline. No API keys required."
+    }
+  ]
+}

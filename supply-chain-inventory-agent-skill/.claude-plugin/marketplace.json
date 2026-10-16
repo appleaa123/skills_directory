@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "supply-chain-inventory-agent-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "supply-chain-inventory-agent-skill",
+      "source": "./",
+      "description": "Multi-agent LLM inventory management simulation distilled from InvAgent, benchmarked against a fixed base-stock policy."
+    }
+  ]
+}

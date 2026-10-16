@@ -1,0 +1,16 @@
+From: procurement@buyer.example.com
+To: sales@acmefasteners.example.com
+Subject: PO-1002 shipment delay
+Date: Mon, 15 Jul 2026 09:00:00 -0000
+Content-Type: text/plain; charset="utf-8"
+
+Hi team,
+
+PO-1002 (M8 Bolts, 2000 units) is now three weeks overdue. Can you confirm the new ship date?
+
+Thanks,
+Jordan
+
+On Mon, 1 Jul 2026, sales@acmefasteners.example.com wrote:
+> We are experiencing a delay due to a supplier issue on our end.
+> Expect an update by end of week.

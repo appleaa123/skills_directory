@@ -1,0 +1,57 @@
+{
+  "num_stages": 4,
+  "num_periods": 12,
+  "init_inventories": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "lead_times": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "demand": {
+    "type": "constant",
+    "value": 4
+  },
+  "prod_capacities": [
+    20,
+    20,
+    20,
+    20
+  ],
+  "sale_prices": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "order_costs": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "backlog_costs": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "holding_costs": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "stage_names": [
+    "retailer",
+    "wholesaler",
+    "distributor",
+    "manufacturer"
+  ],
+  "demand_description": "The expected demand at the retailer (stage 1) is a constant 4 units for all 12 rounds."
+}

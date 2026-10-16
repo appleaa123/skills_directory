@@ -1,0 +1,8 @@
+{
+  "name": "supply-chain-document-qa-skill",
+  "version": "1.0.0",
+  "description": "Zero-infrastructure document Q and A over PDFs, emails, and database/spreadsheet exports using SQLite FTS5 lexical search instead of a vector database.",
+  "author": {
+    "name": "agent-skill-creator"
+  }
+}

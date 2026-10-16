@@ -1,0 +1,4 @@
+order_id,supplier,item,quantity,order_date,status
+PO-1001,Acme Fasteners,M6 Bolts,5000,2026-06-01,shipped
+PO-1002,Acme Fasteners,M8 Bolts,2000,2026-06-15,delayed
+PO-1003,BrightSteel Co,Steel Coil,10,2026-07-01,pending

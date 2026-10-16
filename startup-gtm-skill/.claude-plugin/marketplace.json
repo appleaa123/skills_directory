@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "startup-gtm-skill",
+  "owner": {
+    "name": "agent-skill-creator"
+  },
+  "plugins": [
+    {
+      "name": "startup-gtm-skill",
+      "source": "./",
+      "description": "Founder-led go-to-market advisor grounded in a proven early-stage go-to-market framework: sales narrative & pricing, ICP & prospecting, outreach & demo scripts, objection handling, closing & pipeline, hiring & onboarding."
+    }
+  ]
+}

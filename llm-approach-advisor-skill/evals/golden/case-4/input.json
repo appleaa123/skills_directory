@@ -1,0 +1,1 @@
+{"task_shape":"new_style_or_behavior","labeled_examples":0,"update_frequency":"never","compute_budget":"multi_gpu","latency":"flexible","safety_exposure":"adversarial_public","notes":"chatbot produces unsafe outputs under adversarial prompts"}

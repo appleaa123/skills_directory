@@ -1,0 +1,11 @@
+{
+  "task_shape": "new_skill",
+  "labeled_examples": 300,
+  "update_frequency": "never",
+  "compute_budget": "single_gpu",
+  "latency": "flexible",
+  "safety_exposure": "cooperative_internal",
+  "needs_nontext_io": false,
+  "needs_multistep_action": false,
+  "notes": "Auto-triage 300 labeled support tickets into categories."
+}

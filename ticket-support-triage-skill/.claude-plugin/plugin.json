@@ -1,0 +1,8 @@
+{
+  "name": "ticket-support-triage-skill",
+  "version": "1.0.0",
+  "description": "Classifies a customer support ticket by sentiment and issue type, then drafts an empathetic professional reply. No API keys required.",
+  "author": {
+    "name": "agent-skill-creator"
+  }
+}

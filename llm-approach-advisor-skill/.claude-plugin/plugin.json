@@ -1,0 +1,8 @@
+{
+  "name": "llm-approach-advisor-skill",
+  "version": "1.0.0",
+  "description": "Advises which LLM build approach (prompting, RAG, fine-tuning, knowledge editing, alignment, multimodal/agent) fits a given goal and constraints.",
+  "author": {
+    "name": "agent-skill-creator"
+  }
+}

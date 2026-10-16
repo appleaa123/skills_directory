@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "case_id": "input",
+  "question": "SH-502 Aluminum Sheets customs hold Northgate",
+  "files_processed": [
+    "customs_note.eml",
+    "shipments.json"
+  ],
+  "errors": [],
+  "total_records_indexed": 4,
+  "fts5_available": true,
+  "results": [
+    {
+      "doc_id": "tabular:shipments.json:1",
+      "source_path": "shipments.json",
+      "source_type": "tabular",
+      "title": "shipments row 2",
+      "date": "2026-05-28",
+      "text": "shipment_id: SH-502\nsupplier: Northgate Logistics\ncarrier: OceanFreight Co\nitem: Aluminum Sheets\nquantity: 120\nshipment_date: 2026-05-28\nstatus: customs_hold",
+      "metadata": {
+        "row_index": 1,
+        "shipment_id": "SH-502",
+        "supplier": "Northgate Logistics",
+        "carrier": "OceanFreight Co",
+        "item": "Aluminum Sheets",
+        "quantity": 120,
+        "shipment_date": "2026-05-28",
+        "status": "customs_hold"
+      },
+      "score": -7.5815e-06
+    },
+    {
+      "doc_id": "email:6322db82ec2e91aa",
+      "source_path": "customs_note.eml",
+      "source_type": "email",
+      "title": "SH-502 held at customs",
+      "date": "2026-05-28",
+      "text": "Subject: SH-502 held at customs\nFrom: broker@customsdesk.example.com\nTo: logistics@buyer.example.com\n\nHi,\n\nShipment SH-502 (Aluminum Sheets, Northgate Logistics) has been placed on\ncustoms hold pending documentation review. We need the commercial invoice\nresubmitted before it can clear.\n\nRegards,\nCustoms Desk",
+      "metadata": {
+        "from": "broker@customsdesk.example.com",
+        "to": "logistics@buyer.example.com",
+        "subject": "SH-502 held at customs",
+        "part": "latest_reply",
+        "chunk_index": 0
+      },
+      "score": -7.541e-06
+    },
+    {
+      "doc_id": "tabular:shipments.json:0",
+      "source_path": "shipments.json",
+      "source_type": "tabular",
+      "title": "shipments row 1",
+      "date": "2026-05-20",
+      "text": "shipment_id: SH-501\nsupplier: Northgate Logistics\ncarrier: OceanFreight Co\nitem: Copper Wire Reels\nquantity: 40\nshipment_date: 2026-05-20\nstatus: in_transit",
+      "metadata": {
+        "row_index": 0,
+        "shipment_id": "SH-501",
+        "supplier": "Northgate Logistics",
+        "carrier": "OceanFreight Co",
+        "item": "Copper Wire Reels",
+        "quantity": 40,
+        "shipment_date": "2026-05-20",
+        "status": "in_transit"
+      },
+      "score": -2.1366e-06
+    }
+  ]
+}
