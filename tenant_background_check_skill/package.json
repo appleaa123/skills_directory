@@ -1,0 +1,32 @@
+{
+  "name": "tenant-background-check",
+  "version": "1.0.0",
+  "description": "Local, privacy-preserving checks for rental application packages (credit report tampering, cross-document consistency).",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "tbc": "src/cli/index.js"
+  },
+  "scripts": {
+    "test": "node --test tests/unit/*.test.js",
+    "corpus": "node --test tests/corpus/*.test.js",
+    "build": "node build/build-html.js",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "jpeg-js": "0.4.4",
+    "jszip": "3.10.1",
+    "pdfjs-dist": "4.10.38",
+    "pngjs": "7.0.0",
+    "tesseract.js": "5.1.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.49.1",
+    "esbuild": "0.24.2",
+    "pdf-lib": "1.17.1"
+  }
+}

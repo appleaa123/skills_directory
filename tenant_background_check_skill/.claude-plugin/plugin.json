@@ -1,0 +1,6 @@
+{
+  "name": "tenant-background-check",
+  "version": "1.0.0",
+  "description": "Screens rental applications: local checker for credit-report tampering and cross-document consistency, plus public research and a screening report. Applicant documents never leave the computer.",
+  "author": { "name": "Al" }
+}

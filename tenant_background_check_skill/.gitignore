@@ -1,0 +1,5 @@
+node_modules/
+.tbc-state.json
+test-results/
+playwright-report/
+eng.traineddata

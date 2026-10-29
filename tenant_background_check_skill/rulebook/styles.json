@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "styles": [
+    {
+      "id": "equifax-consumer-disclosure",
+      "notes": "Calibrated 2026-10-29 on 2 genuine samples (5ee339, af7068). Gauge offsets -21.55/-20.96 pt; char-width ratio 0.8607 both.",
+      "match": {
+        "pageSize": [595, 842],
+        "requiredAnchors": ["Further to your request", "Equifax Canada Co.", "EQUIFAX REFERENCE NUMBER"]
+      },
+      "expectedProducers": ["^Skia/PDF"],
+      "anchorFonts": [
+        { "phrase": "Further to your request", "font": "FreeSans", "sameAs": "Equifax Canada Co.", "charWidthRatioToSameAs": 0.8607, "imageRatioTolerance": 0.08 }
+      ],
+      "reportDateAnchor": "Further to your request",
+      "dateFormat": "^\\d{4}/\\d{2}/\\d{2}$",
+      "gauge": {
+        "pointerGlyph": "▼",
+        "bands": [[300, 559], [560, 659], [660, 724], [725, 759], [760, 900]],
+        "rangeLabels": ["300-559", "560-659", "660-724", "725-759", "760-900"],
+        "pointerOffsetFromFirstRangeLabel": -21.26,
+        "tolerancePt": 2.0,
+        "imageToleranceBarFraction": 0.015
+      },
+      "postal": { "addressLabels": ["Current Address", "Previous Address", "Former Address"], "addressFormat": "spaced" },
+      "imageMatchAnchors": ["Equifax Credit Score", "Further to your request", "Equifax Canada Co.", "EQUIFAX REFERENCE NUMBER", "CONSUMER USE ONLY", "300-559", "560-659", "660-724", "725-759", "760-900"]
+    },
+    {
+      "id": "transunion-consumer-disclosure",
+      "notes": "Calibrated 2026-10-29 on 1 genuine sample (1f69b2). Layout rules deliberately minimal until more samples exist.",
+      "match": {
+        "producer": "^iText",
+        "creator": "^ConsumerDisclosureService$",
+        "pageSize": [612, 792],
+        "requiredAnchors": ["TransUnion", "Personal Information"]
+      },
+      "expectedProducers": ["^iText"]
+    }
+  ]
+}

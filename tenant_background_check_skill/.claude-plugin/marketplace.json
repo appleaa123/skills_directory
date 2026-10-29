@@ -1,0 +1,12 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tenant-background-check",
+  "owner": { "name": "Al" },
+  "plugins": [
+    {
+      "name": "tenant-background-check",
+      "source": "./",
+      "description": "Screens rental applications: local checker for credit-report tampering and cross-document consistency, plus public research and a screening report."
+    }
+  ]
+}

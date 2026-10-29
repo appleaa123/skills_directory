@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tenant File Checker</title>
+<style>
+  :root { --bg:#f7f7f5; --panel:#fff; --text:#1d1d1b; --muted:#5c5c57; --border:#d9d9d4; --accent:#1f5f8b; --warn-bg:#fff4e5; --warn:#8a4b00; --ok-bg:#e8f3ec; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161615; --panel:#20201f; --text:#ececea; --muted:#a3a39e; --border:#3a3a37; --accent:#7fb4dc; --warn-bg:#3a2a12; --warn:#f2c48a; --ok-bg:#1d3326; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  h2 { font-size: 1.1rem; margin: 0 0 12px; }
+  p.lead { color: var(--muted); margin: 0 0 16px; }
+  .banner { background: var(--ok-bg); border:1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; }
+  section { background: var(--panel); border:1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  label { display:flex; flex-direction:column; gap:4px; font-size: .92rem; color: var(--muted); }
+  input, textarea { font: inherit; color: var(--text); background: var(--bg); border:1px solid var(--border); border-radius: 6px; padding: 8px 10px; width: 100%; }
+  textarea { min-height: 320px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85rem; }
+  button { font: inherit; border: 0; border-radius: 6px; padding: 9px 16px; background: var(--accent); color: #fff; cursor: pointer; }
+  button:disabled { opacity: .6; cursor: progress; }
+  .row { display:flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-top: 12px; }
+  .row label { flex: 1 1 160px; }
+  [role=alert] { background: var(--warn-bg); color: var(--warn); border-radius: 6px; padding: 8px 12px; margin-top: 12px; }
+  [role=alert]:empty { display:none; }
+  .hint { font-size: .85rem; color: var(--muted); margin: 8px 0 0; }
+  .source { font-size: .78rem; color: var(--accent); min-height: 1em; }
+  input.blank { border-style: dashed; }
+  .notice { background: var(--warn-bg); color: var(--warn); border-radius: 6px; padding: 8px 12px; margin: 0 0 12px; font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Tenant File Checker</h1>
+  <p class="lead">Screens a rental application package for signs of edited credit reports and documents that don't agree with each other.</p>
+  <div class="banner">Files stay on this computer. Only the summary below is meant to be shared.</div>
+
+  <section>
+    <h2>1. Application files</h2>
+    <label>Application files<input id="files" type="file" multiple accept=".zip,.pdf,.jpg,.jpeg,.png"></label>
+    <p class="hint">A zip from email works. The checker reads the files on this computer and fills in step 2 for you. Screenshots are read with on-device text recognition (first use downloads the recognition engine; your files are not uploaded).</p>
+    <p id="reading" class="hint" aria-live="polite"></p>
+  </section>
+
+  <section>
+    <h2>2. What the application says</h2>
+    <p class="notice">All fields are optional. The checker fills in what it can read from the files. Check each value, correct anything misread, and fill in blanks if you know them. Fewer details means fewer cross-checks, not a problem with the applicant.</p>
+    <div class="grid">
+      <label>Applicant name<input id="name" autocomplete="off"><span class="source" data-testid="source-name" id="src-name"></span></label>
+      <label>Date of birth<input id="dob" placeholder="YYYY-MM-DD" autocomplete="off"><span class="source" data-testid="source-dob" id="src-dob"></span></label>
+      <label>Current address<input id="currentAddress" autocomplete="off"><span class="source" data-testid="source-currentAddress" id="src-currentAddress"></span></label>
+      <label>City<input id="city" autocomplete="off"><span class="source" data-testid="source-city" id="src-city"></span></label>
+      <label>Province<input id="province" autocomplete="off"><span class="source" data-testid="source-province" id="src-province"></span></label>
+      <label>Country<input id="country" autocomplete="off"><span class="source" data-testid="source-country" id="src-country"></span></label>
+      <label>Employer<input id="employer" autocomplete="off"><span class="source" data-testid="source-employer" id="src-employer"></span></label>
+      <label>Job title<input id="title" autocomplete="off"><span class="source" data-testid="source-title" id="src-title"></span></label>
+      <label>Annual salary<input id="annualSalary" inputmode="numeric" autocomplete="off"><span class="source" data-testid="source-annualSalary" id="src-annualSalary"></span></label>
+      <label>Landlord reference name<input id="refName" autocomplete="off"><span class="source" data-testid="source-refName" id="src-refName"></span></label>
+      <label>Landlord reference phone<input id="refPhone" autocomplete="off"><span class="source" data-testid="source-refPhone" id="src-refPhone"></span></label>
+      <label>Landlord reference address<input id="refAddress" autocomplete="off"><span class="source" data-testid="source-refAddress" id="src-refAddress"></span></label>
+    </div>
+    <p class="hint">Date of birth, address and salary are only used on this computer. They are never put in the summary.</p>
+  </section>
+
+    <div class="row"><button id="run" type="button">Run check</button></div>
+    <div id="error" role="alert"></div>
+  </section>
+
+  <section>
+    <h2>3. Summary to share with your AI assistant</h2>
+    <label>Summary to share<textarea id="summary" readonly></textarea></label>
+    <div class="row"><button id="copy" type="button">Copy summary</button></div>
+  </section>
+
+  <section>
+    <h2>4. Salary check</h2>
+    <p class="hint">Paste the salary range your AI assistant found for this job title and city. The comparison happens here; the salary is never shared.</p>
+    <div class="row">
+      <label>Range low<input id="low" inputmode="numeric"></label>
+      <label>Range high<input id="high" inputmode="numeric"></label>
+      <button id="salary" type="button">Compare salary</button>
+    </div>
+    <p data-testid="salary-result" id="salaryResult" class="hint"></p>
+  </section>
+</main>
+<!-- APP_SCRIPT -->
+</body>
+</html>
