@@ -32,5 +32,15 @@ write the report per `references/report-template.md`.
   (rebuilds `dist/checker.html`).
 - `CORPUS_DIR=<private folder> npm run corpus` runs acceptance on real samples.
   The corpus is never committed; corpus scripts print content IDs and flag codes only.
-- Only maintainers edit `rulebook/styles.json`. Use `tbc learn <genuine.pdf>` to
-  measure a new report style.
+- Only maintainers edit `rulebook/styles.json`. Use `tbc learn <genuine.pdf>` (or
+  the checker page's "Help add a new report layout" section) to measure a new
+  report style. Both print the same PII-free layout report: matched style, flag
+  codes, fingerprint, range labels and measurements. A genuine report of a known
+  style that shows red flag codes means the bureau changed its layout
+  (`REPORT_DATE_OLD` alone just means the report is over 30 days old).
+- Versions in `package.json`, `SKILL.md` and `.claude-plugin/plugin.json` must
+  match; `npm run build` refuses otherwise. To publish, bump all three, commit
+  and push, then `npm run release` (builds, refuses if the working tree is not
+  clean, then creates GitHub release `tbc-v<version>` at the current commit with
+  `checker.html` attached). The first line of the release notes is shown in the
+  checker's update banner.

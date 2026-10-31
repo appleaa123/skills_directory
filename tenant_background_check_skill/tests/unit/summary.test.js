@@ -87,3 +87,11 @@ test('label and amount spans a fraction of a point apart are read as one line', 
   const state = await runChecks([{ name: 's.pdf', bytes: stub }], APP, RULEBOOK, ENV);
   assert.ok(!state.flags.some((f) => f.code === 'PAYSTUB_UNPARSEABLE'), state.flags.map((f) => f.code).join());
 });
+
+test('the checker version is shown so an outdated checker can be spotted', async () => {
+  const state = await runChecks(await pkg(), APP, RULEBOOK, ENV);
+  const s = buildSummary(state, APP, { checkerVersion: '1.1.0' });
+  assert.equal(s.checkerVersion, '1.1.0');
+  assert.match(renderSummaryText(s), /^Checker version: 1\.1\.0$/m);
+  assert.match(renderSummaryText(buildSummary(state, APP)), /^Checker version: unknown$/m);
+});

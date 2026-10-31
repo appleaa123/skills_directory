@@ -28,14 +28,28 @@
   .hint { font-size: .85rem; color: var(--muted); margin: 8px 0 0; }
   .source { font-size: .78rem; color: var(--accent); min-height: 1em; }
   input.blank { border-style: dashed; }
+  .update { display:flex; gap: 10px; align-items:center; flex-wrap: wrap; background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; }
+  .update[hidden] { display:none; }
+  .update span { flex: 1 1 260px; }
+  .update a { color: var(--accent); font-weight: 600; }
+  .update button { background: transparent; color: var(--warn); border: 1px solid currentColor; padding: 4px 10px; }
+  details > summary { cursor: pointer; font-weight: 600; }
+  label.check { flex-direction: row; align-items: center; gap: 8px; margin-top: 12px; }
+  label.check input { width: auto; }
   .notice { background: var(--warn-bg); color: var(--warn); border-radius: 6px; padding: 8px 12px; margin: 0 0 12px; font-size: .9rem; }
 </style>
 </head>
 <body>
 <main>
+  <div id="update" class="update" role="status" hidden>
+    <span id="updateText"></span>
+    <a id="updateLink" href="#" rel="noopener noreferrer">Download</a>
+    <button id="updateDismiss" type="button">Not now</button>
+  </div>
   <h1>Tenant File Checker</h1>
   <p class="lead">Screens a rental application package for signs of edited credit reports and documents that don't agree with each other.</p>
   <div class="banner">Files stay on this computer. Only the summary below is meant to be shared.</div>
+  <p class="hint">On opening, this page asks GitHub whether a newer checker exists. That request carries nothing about you or your files.</p>
 
   <section>
     <h2>1. Application files</h2>
@@ -83,6 +97,19 @@
       <button id="salary" type="button">Compare salary</button>
     </div>
     <p data-testid="salary-result" id="salaryResult" class="hint"></p>
+  </section>
+
+  <section>
+    <details>
+      <summary>Help add a new report layout</summary>
+      <p class="hint">If a credit report came back as "not in the rulebook", you can help. Download <strong>your own</strong> credit report from the same bureau or app as a PDF and drop it here. Never use an applicant's report. The checker measures only the page layout on this computer; the layout report has no names, numbers or addresses. Send it to whoever gave you this checker.</p>
+      <label>Your own credit report (PDF)<input id="learnFile" type="file" accept=".pdf"></label>
+      <label class="check"><input id="learnOwn" type="checkbox">This is my own report, downloaded from the bureau or provider</label>
+      <div class="row"><button id="learn" type="button">Make layout report</button></div>
+      <div id="learnError" role="alert"></div>
+      <label>Layout report to send<textarea id="layoutReport" readonly></textarea></label>
+      <div class="row"><button id="copyLayout" type="button">Copy layout report</button></div>
+    </details>
   </section>
 </main>
 <!-- APP_SCRIPT -->

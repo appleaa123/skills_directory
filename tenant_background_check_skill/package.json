@@ -1,6 +1,6 @@
 {
   "name": "tenant-background-check",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Local, privacy-preserving checks for rental application packages (credit report tampering, cross-document consistency).",
   "type": "module",
   "license": "MIT",
@@ -15,7 +15,8 @@
     "test": "node --test tests/unit/*.test.js",
     "corpus": "node --test tests/corpus/*.test.js",
     "build": "node build/build-html.js",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "release": "npm run build && test -z \"$(git status --porcelain)\" && gh release create tbc-v$npm_package_version dist/checker.html --target \"$(git rev-parse HEAD)\" --title \"Tenant File Checker v$npm_package_version\""
   },
   "dependencies": {
     "jpeg-js": "0.4.4",

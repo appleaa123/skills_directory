@@ -5,9 +5,12 @@ import { mkdtempSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { makePdf } from '../fixtures/make.js';
+import { LAYOUT_REPORT_HEADER } from '../../src/engine/learn.js';
 
 const CLI = new URL('../../src/cli/index.js', import.meta.url).pathname;
 const run = (...args) => spawnSync(process.execPath, [CLI, ...args], { encoding: 'utf8' });
+// Layout report: header line, checker version line, then JSON.
+const layoutJson = (stdout) => JSON.parse(stdout.split('\n').slice(2).join('\n'));
 let dir;
 
 before(async () => {
@@ -72,8 +75,38 @@ test('learn prints a fingerprint with no non-anchor text', async () => {
     { text: 'JANE DOE', x: 50, y: 680, size: 10 }]));
   const r = run('learn', f);
   assert.equal(r.status, 0, r.stderr);
-  const out = JSON.parse(r.stdout);
+  assert.ok(r.stdout.startsWith(LAYOUT_REPORT_HEADER));
+  const out = layoutJson(r.stdout);
   assert.ok(!r.stdout.includes('JANE') && !r.stdout.includes('2026/01/02'));
   assert.ok(out.fingerprint.anchors.length >= 2);
   assert.equal(typeof out.charWidthRatios['Further to your request|Equifax Canada Co.'], 'number');
+});
+
+test('learn removes the licensee name and reports the matched style', async () => {
+  const f = join(dir, 'learn-itext.pdf');
+  writeFileSync(f, await makePdf([
+    { text: 'TransUnion', x: 50, y: 760, size: 14 },
+    { text: 'Personal Information', x: 50, y: 700, size: 12 }],
+  { producer: 'iText 5.5.13 (Licensed for: Jane Doe Holdings)', creator: 'ConsumerDisclosureService' }));
+  const r = run('learn', f);
+  assert.equal(r.status, 0, r.stderr);
+  assert.ok(!r.stdout.includes('Jane Doe Holdings'));
+  const out = layoutJson(r.stdout);
+  assert.equal(out.styleId, 'transunion-consumer-disclosure');
+});
+
+test('check prints the checker version from package.json', () => {
+  const { version } = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
+  const r = run('check', dir);
+  assert.equal(r.status, 0, r.stderr);
+  assert.ok(r.stdout.includes(`Checker version: ${version}`));
+});
+
+test('learn refuses a paystub PDF with the shared message', async () => {
+  const f = join(dir, 'learn-stub.pdf');
+  writeFileSync(f, await makePdf([{ text: 'Earnings Statement  Net Pay $1,900.00', x: 50, y: 700, size: 10 }]));
+  const r = run('learn', f);
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /credit report/);
+  assert.equal(r.stdout, '');
 });

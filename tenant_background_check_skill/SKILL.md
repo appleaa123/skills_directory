@@ -17,7 +17,7 @@ description: >-
 license: MIT
 activation: /tenant-background-check
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   created: 2026-10-29
 ---
 # /tenant-background-check: Rental Application Screening
@@ -87,6 +87,17 @@ problem with the applicant; say so when the summary shows "not provided".
   unverified" under Soft flags.
 - Always say: most LTB orders are unpublished; nothing found ≠ clean.
 - Letterhead and salary findings are never red.
+- `STYLE_UNKNOWN`: the report's layout isn't in the checker's rulebook, so its
+  template wasn't checked. Put it under **Could not verify** (it says nothing
+  about the applicant) and suggest a check that doesn't depend on the layout: a
+  live screen-share of the applicant's bureau account, or the paid screening check.
+  Tell the user they can help add the layout: download **their own** report from
+  the same bureau or app as a PDF, run it through the checker's "Help add a new
+  report layout" section (or `tbc learn <own-report.pdf>`) and send the layout
+  report to whoever gave them the checker. Never suggest using the applicant's report.
+- If the summary's `Checker version` line is missing, says "unknown", or is older
+  than this skill's `metadata.version`, say the checker is out of date: layouts added since then were
+  not checked. Ask the user to download the newest checker and run it again.
 - Recommend the paid screening check (FrontLobby or equivalent) **only if there
   are no red flags**. With a red flag, recommend stopping or asking for a
   document sent directly from its source (e.g. a fresh report from the bureau).

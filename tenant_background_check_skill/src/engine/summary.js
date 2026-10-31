@@ -9,11 +9,13 @@ const worst = (flags) => flags.reduce((w, f) => (RANK[f.severity] > RANK[w] ? f.
 /**
  * The ONLY object that may leave the machine. Built field by field from the allowlist
  * (spec §5); never spread `state` or `app` into it.
+ * @param {{checkerVersion?:string}} [meta]
  */
-export function buildSummary(state, app) {
+export function buildSummary(state, app, meta = {}) {
   const ref = app.reference;
   return {
     version: 1,
+    checkerVersion: meta.checkerVersion ?? null,
     applicant: { name: app.name ?? null, city: app.city ?? null, province: app.province ?? null, country: app.country ?? null, employer: app.employer ?? null, title: app.title ?? null },
     letterhead: {
       ...(state.letterhead?.emailDomain && { emailDomain: state.letterhead.emailDomain }),
@@ -48,6 +50,7 @@ export function renderSummaryText(s) {
   const a = s.applicant;
   const out = [
     SUMMARY_HEADER,
+    `Checker version: ${s.checkerVersion ?? 'unknown'}`,
     '',
     'PUBLIC FACTS (may be searched)',
     given('Applicant', a.name), given('Location', [a.city, a.province, a.country].filter(Boolean).join(', ')),

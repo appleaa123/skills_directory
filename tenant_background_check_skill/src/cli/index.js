@@ -7,9 +7,7 @@ import { extractApplication } from '../engine/extract-application.js';
 import { buildSummary, renderSummaryText } from '../engine/summary.js';
 import { validateApplication } from '../engine/application.js';
 import { compareSalary } from '../engine/checks/salary.js';
-import { extractPdf } from '../engine/pdf/extract.js';
-import { fingerprint } from '../engine/style.js';
-import { measureCharWidthRatio, measureGaugeOffset } from '../engine/measure.js';
+import { learnLayout, renderLayoutReport, LEARN_ERRORS } from '../engine/learn.js';
 import { terminateOcr } from '../engine/image/ocr.js';
 import { decodeImage, toOcrInput, OCR_WORKER_OPTIONS } from '../node/decode.js';
 
@@ -18,9 +16,8 @@ const EXIT_USAGE = 2;
 const STATE_FILE = '.tbc-state.json';
 const APP_FILE = 'application.json';
 const RULEBOOK = JSON.parse(readFileSync(new URL('../../rulebook/styles.json', import.meta.url), 'utf8'));
-const DEFAULT_GLYPH = '▼';
-const DEFAULT_BANDS = [[300, 559], [560, 659], [660, 724], [725, 759], [760, 900]];
-const LEARN_PAIRS = [['Further to your request', 'Equifax Canada Co.']];
+const { version: CHECKER_VERSION } = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
+const ENV = { decodeImage, toOcrInput, workerOptions: OCR_WORKER_OPTIONS };
 const USAGE = `Usage:
   tbc check <folder|zip> [--app application.json]
   tbc salary <folder> --range <low>-<high>
@@ -52,9 +49,8 @@ const loadApp = (path) => readAppFile(path).app;
 async function check(target, appPath) {
   const path = appPath ?? join(folderOf(target), APP_FILE);
   const entries = listFiles(target).map((p) => ({ name: basename(p), bytes: new Uint8Array(readFileSync(p)) }));
-  const env = { decodeImage, toOcrInput, workerOptions: OCR_WORKER_OPTIONS };
   try {
-    const read = await readDocuments(entries, env);
+    const read = await readDocuments(entries, ENV);
     if (!existsSync(path)) {
       const { values, sources } = extractApplication(read);
       writeFileSync(path, JSON.stringify({ ...values, _sources: sources }, null, 2));
@@ -63,7 +59,7 @@ async function check(target, appPath) {
     const { app, sources } = readAppFile(path);
     const state = runChecksOn(read, app, RULEBOOK, new Date(), { sources });
     writeFileSync(join(folderOf(target), STATE_FILE), JSON.stringify(state, null, 2));
-    process.stdout.write(`${renderSummaryText(buildSummary(state, app))}\n`);
+    process.stdout.write(`${renderSummaryText(buildSummary(state, app, { checkerVersion: CHECKER_VERSION }))}\n`);
   } finally {
     await terminateOcr();
   }
@@ -84,15 +80,9 @@ function salary(folder, range, appPath) {
 }
 
 async function learn(file) {
-  const extracted = await extractPdf(new Uint8Array(readFileSync(file)));
-  if (!extracted.ok) throw new UsageError(`Could not read PDF (${extracted.reason})`);
-  const charWidthRatios = Object.fromEntries(LEARN_PAIRS.map(([a, b]) => [`${a}|${b}`, measureCharWidthRatio(extracted, a, b)]));
-  const out = {
-    fingerprint: fingerprint(extracted),
-    charWidthRatios,
-    pointerOffsetFromFirstRangeLabel: measureGaugeOffset(extracted, DEFAULT_GLYPH, DEFAULT_BANDS),
-  };
-  process.stdout.write(`${JSON.stringify(out, null, 2)}\n`);
+  const out = await learnLayout(new Uint8Array(readFileSync(file)), RULEBOOK);
+  if (!out.ok) throw new UsageError(LEARN_ERRORS[out.reason]);
+  process.stdout.write(`${renderLayoutReport(out, CHECKER_VERSION)}\n`);
 }
 
 async function main(argv) {

@@ -151,3 +151,8 @@ reference details are meant to be shared.
 
 `npm install`, `npm test`, `npm run e2e`, `npm run build`. Rulebook calibration:
 `CORPUS_DIR=<private samples> npm run corpus` and `tbc learn <genuine.pdf>`.
+Publishing a new checker: see "Development" in `AGENTS.md` (`npm run release`).
+
+The checker page asks GitHub's public release list for a newer `tbc-v*` release
+when it opens and shows a download banner if there is one. No data about the user
+or their files is sent.

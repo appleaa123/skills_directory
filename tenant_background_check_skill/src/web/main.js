@@ -4,10 +4,15 @@ import { extractApplication } from '../engine/extract-application.js';
 import { buildSummary, renderSummaryText } from '../engine/summary.js';
 import { validateApplication } from '../engine/application.js';
 import { compareSalary } from '../engine/checks/salary.js';
+import { learnLayout, renderLayoutReport, LEARN_ERRORS } from '../engine/learn.js';
+import { RELEASES_URL, pickUpdate } from './update.js';
 import RULEBOOK from '../../rulebook/styles.json';
 
 // Run pdf.js in this page: nothing is fetched and no file leaves the computer.
 globalThis.pdfjsWorker = pdfWorker;
+
+const CHECKER_VERSION = __TBC_VERSION__; // stamped by build/build-html.js
+const UPDATE_TIMEOUT_MS = 5000;
 
 const $ = (id) => document.getElementById(id);
 const TEXT_FIELDS = ['name', 'dob', 'currentAddress', 'city', 'province', 'country', 'employer', 'title'];
@@ -40,7 +45,7 @@ function toOcrInput(rgba) {
 }
 
 const showError = (msg) => { $('error').textContent = msg; };
-const render = () => { $('summary').value = renderSummaryText(buildSummary(current.state, current.app)); };
+const render = () => { $('summary').value = renderSummaryText(buildSummary(current.state, current.app, { checkerVersion: CHECKER_VERSION })); };
 const markBlanks = () => ALL_FIELDS.forEach((id) => $(id).classList.toggle('blank', !$(id).value.trim()));
 
 function showSource(id, docId) {
@@ -124,6 +129,37 @@ function onSalary() {
   render();
 }
 
+/** Ask GitHub for newer checker releases; any failure (offline, rate limit) just means no banner. */
+async function checkForUpdate() {
+  try {
+    const res = await fetch(RELEASES_URL, { cache: 'no-store', signal: AbortSignal.timeout(UPDATE_TIMEOUT_MS) });
+    const update = res.ok ? pickUpdate(await res.json(), CHECKER_VERSION) : null;
+    if (!update) return;
+    // Release notes are remote content: textContent only, never innerHTML.
+    $('updateText').textContent = `A newer checker is available (v${update.version}). ${update.note}`.trim();
+    $('updateLink').href = update.url;
+    $('update').hidden = false;
+  } catch {
+    // No banner.
+  }
+}
+
+async function onLearn() {
+  const showLearnError = (msg) => { $('learnError').textContent = msg; };
+  showLearnError('');
+  $('layoutReport').value = '';
+  const file = $('learnFile').files[0];
+  if (!$('learnOwn').checked) return showLearnError('Only use your own report, downloaded from the bureau or provider. Tick the box to confirm.');
+  if (!file) return showLearnError('Choose your credit report PDF first.');
+  try {
+    const report = await learnLayout(new Uint8Array(await file.arrayBuffer()), RULEBOOK);
+    if (!report.ok) return showLearnError(LEARN_ERRORS[report.reason]);
+    $('layoutReport').value = renderLayoutReport(report, CHECKER_VERSION);
+  } catch {
+    showLearnError('Something went wrong while reading the PDF. Try downloading it again.');
+  }
+}
+
 // A value the user edits is theirs now, not the document's: stop treating it as auto-filled.
 for (const id of ALL_FIELDS) {
   $(id).addEventListener('input', () => {
@@ -137,4 +173,8 @@ $('files').addEventListener('change', () => { reading = onFiles(); });
 $('run').addEventListener('click', onRun);
 $('salary').addEventListener('click', onSalary);
 $('copy').addEventListener('click', () => navigator.clipboard?.writeText($('summary').value));
+$('updateDismiss').addEventListener('click', () => { $('update').hidden = true; });
+$('learn').addEventListener('click', onLearn);
+$('copyLayout').addEventListener('click', () => navigator.clipboard?.writeText($('layoutReport').value));
 markBlanks();
+checkForUpdate();
