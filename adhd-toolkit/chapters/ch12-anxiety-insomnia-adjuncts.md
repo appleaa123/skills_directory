@@ -76,7 +76,7 @@ ADHD rarely travels alone; it is frequently accompanied by anxiety, insomnia, an
 - **Adjunct Nutritional Protocol**:
   1. *Morning Synergy*: Replace second morning coffee with ceremonial grade Matcha green tea (provides steady caffeine modulated by L-Theanine for smooth alpha-wave focus).
   2. *Lunch Buffer*: Add 1/2 avocado and a side of kimchi to lunch (stabilizes blood sugar and feeds GABA-producing gut bacteria).
-  3. *Evening Wind-Down*: At 09:30 PM, drink 4 oz of unsweetened tart cherry juice mixed with hot chamomile tea and take 200mg of magnesium.
+  3. *Evening Wind-Down*: At 09:30 PM, drink unsweetened tart cherry juice mixed with hot chamomile tea and have a handful of pumpkin seeds (a magnesium-rich food). A magnesium supplement, and how much, is a question for a doctor or pharmacist.
 - **Outcome**: Morning anxiety dissolves into smooth focus; sleep latency drops from 3 hours to under 30 minutes.
 
 ---
