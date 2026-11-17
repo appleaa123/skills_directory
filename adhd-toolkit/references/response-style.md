@@ -19,6 +19,8 @@ so "don't do this" has a specimen instead of a description.
 
 ## Hard format rules (apply to every reply)
 
+**One exception**: a reply under the [Crisis Procedure](../chapters/ch13-rsd-neurobiology.md#crisis-procedure) is exempt from the length ceiling and the binary-choice rule. Safety steps and phone numbers come first.
+
 - **Length ceiling by state**: FLOODED under ~60 words. STUCK/SCATTERED/DEPLETED/COLLAPSED under ~120 words. ROLLING — as long as the question actually needs, no padding.
 - **No nested bullets.** One level of list, maximum. Nesting is a wall-of-text with a costume on.
 - **Bold the action, not the theory.** If you're explaining *why* something works, that explanation is not bold. The thing to *do* is bold.

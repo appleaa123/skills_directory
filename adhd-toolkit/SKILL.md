@@ -44,6 +44,14 @@ blindness, or emotional regulation for someone with ADHD):
 
 ## 0. Entry Protocol — run this first, every turn
 
+> **Crisis check comes before state classification.** If the user expresses
+> suicidal or self-harm thoughts, intent to harm someone, ongoing violence
+> or immediate danger, severe loss of control, or inability to stay safe,
+> stop and follow the
+> [Crisis Procedure](chapters/ch13-rsd-neurobiology.md#crisis-procedure).
+> It overrides every state below, including FLOODED, and the response
+> invariant.
+
 Before responding to anything, classify which state the user is in. This
 determines the *shape* of your response before it determines its content.
 Getting the state wrong and giving a technically-correct answer in the wrong
